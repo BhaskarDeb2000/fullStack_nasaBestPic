@@ -16,6 +16,7 @@
   "dependencies": {
     "@types/axios": "^0.14.4",
     "@types/cors": "^2.8.17",
+    "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.0",
     "axios": "^1.7.8",
