@@ -29,9 +29,12 @@ const App = () => {
   useEffect(() => {
     const fetchData = async (selectedDate: string) => {
       try {
-        const response = await axios.get<Inasa>("http://localhost:5001/nasa/", {
-          params: { date: selectedDate },
-        });
+        const response = await axios.get<Inasa>(
+          "https://nasa-backend-tau.vercel.app/nasa/",
+          {
+            params: { date: selectedDate },
+          }
+        );
         setData(response.data);
       } catch (err) {
         const axiosError = err as AxiosError;
