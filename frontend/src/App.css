@@ -80,7 +80,8 @@
 
 @media (max-width: 1024px) {
   .webpage {
-    max-width: 89%;
+    max-width: 100vh;
+width: 100%;
   }
 
   .datepicker {
