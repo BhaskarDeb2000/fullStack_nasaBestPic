@@ -1,9 +1,14 @@
 import express, { Request, Response } from 'express';
 import axios, { AxiosError } from "axios"
 import cors from "cors"
+import dotenv from "dotenv";
+dotenv.config();
+
 const app = express();
 
 const port = process.env.PORT || 5001;
+const NASA_API_KEY = process.env.NASA_API_KEY
+app.use(cors())
 
 interface Inasa {
 	copyright: string,
@@ -18,13 +23,14 @@ interface Inasa {
 
 
 
-app.use(cors())
+
 
 app.get('/nasa', async (req: Request, res: Response) => {
 	const date = req.query.date as string;
 	try {
-		const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=lGia9bvVwTFTENYiPF9Z9xm3V7mdab0zFtNaUJWj&date=${date}&hd=true`)
+		const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&date=${date}&hd=true`)
 		res.send(response.data as Inasa)
+
 	}
 	catch (error: AxiosError | unknown) {
 		res.send();
