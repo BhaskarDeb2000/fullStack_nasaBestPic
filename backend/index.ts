@@ -33,8 +33,9 @@ app.get('/nasa', async (req: Request, res: Response) => {
 		res.send(response.data as Inasa)
 
 	}
-	catch (error: AxiosError | unknown) {
-		res.send("Cannot get anything");
+	catch (error) {
+        const axiosError = error as AxiosError;
+        res.send(axiosError.message);
 	}
 
 

@@ -62,7 +62,6 @@
   }
 
   .datepicker h1 {
-
     padding-right: 0;
     margin: 0 0 10px 0;
   }
@@ -82,8 +81,8 @@
 @media (max-width: 1024px) {
   .webpage {
     max-width: 100vh;
-min-height: 150vh;
-width: 100%;
+    min-height: 150vh;
+    width: 100%;
   }
 
   .datepicker {
