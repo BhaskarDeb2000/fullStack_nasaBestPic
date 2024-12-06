@@ -18,15 +18,18 @@ Welcome to the **NASA Picture of the Day App**, where you can explore breathtaki
 ---
 
 ## 🌍 Overview
+
 This app allows users to view NASA's daily space image, along with detailed descriptions. Select any date and dive into the cosmos! 🌠
 
 The app consists of:
+
 1. **Frontend:** A React-based interface to interact with the API and display data beautifully.
 2. **Backend:** An Express server acting as a proxy for the NASA APOD API.
 
 ---
 
 ## ✨ Features
+
 - 🗓️ **Date Picker:** Choose any date to explore NASA's space picture for that day.
 - 🔄 **Loading Indicator:** A sleek spinner ensures a seamless user experience.
 - 🚨 **Error Handling:** Displays meaningful messages if something goes wrong.
@@ -37,11 +40,13 @@ The app consists of:
 ## 🛠️ Technologies Used
 
 ### Frontend 🌟
+
 - **React**: Dynamic and interactive UI components.
 - **Material-UI**: Sleek and modern UI library.
 - **Day.js**: Date manipulation made easy.
 
 ### Backend 🌐
+
 - **Express.js**: Lightweight and robust server framework.
 - **Axios**: Simplified HTTP requests.
 - **Dotenv**: Secure environment variable management.
@@ -49,8 +54,10 @@ The app consists of:
 ---
 
 ## 📸 Screenshots
+
 ### Landing Page 🌌
-![Landing Page Screenshot](./Demo/DemoImg.png)
+
+![ScreenShot](./Demo/DemoImg.png)
 
 ---
 
@@ -59,10 +66,13 @@ The app consists of:
 The backend proxies NASA's APOD API. Below is the structure:
 
 ### Endpoint: `/nasa`
+
 #### Query Parameters:
+
 - **`date`**: The date of the picture in `YYYY-MM-DD` format.
 
 #### Example:
+
 ```bash
 GET /nasa?date=2024-01-01
 ```
@@ -70,6 +80,7 @@ GET /nasa?date=2024-01-01
 ---
 
 ## 🌠 Acknowledgments
+
 - **NASA API Team**: For providing access to such a wonderful resource. 🚀
 
 ---
