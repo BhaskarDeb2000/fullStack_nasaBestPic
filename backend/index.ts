@@ -24,8 +24,9 @@ interface Inasa {
 
 app.get('/nasa', async (req: Request, res: Response) => {
 	const date = req.query.date as string;
-console.log(date);
-console.log(NASA_API_KEY);
+console.log({date});
+console.log({NASA_API_KEY});
+console.log("HEllo");
 
 
 	try {
