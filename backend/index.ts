@@ -31,7 +31,7 @@ console.log("HEllo");
 
 	try {
 		const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&date=${date}&hd=true`)
-		res.send(response.data as Inasa)
+		res.json({data: response.data})
 
 	}
 	catch (error: AxiosError | unknown) {
