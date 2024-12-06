@@ -24,16 +24,14 @@ const App = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [value, setValue] = useState<Dayjs | null>(dayjs());
+  console.log("Hello World");
 
   useEffect(() => {
     const fetchData = async (selectedDate: string) => {
       try {
-        const response = await axios.get<Inasa>(
-          "https://nasa-backend-pxlzgzim1-orghodebs-projects.vercel.app/nasa",
-          {
-            params: { date: selectedDate },
-          }
-        );
+        const response = await axios.get<Inasa>("http://localhost:5001/nasa/", {
+          params: { date: selectedDate },
+        });
         setData(response.data);
       } catch (err) {
         const axiosError = err as AxiosError;
