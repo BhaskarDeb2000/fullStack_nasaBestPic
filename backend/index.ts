@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import axios from "axios"
+import axios, { AxiosError } from "axios"
 import cors from "cors"
 const app = express();
 
@@ -20,10 +20,16 @@ interface Inasa {
 
 app.use(cors())
 
-app.get('/', async (req: Request, res: Response) => {
+app.get('/nasa', async (req: Request, res: Response) => {
+	const date = req.query.date as string;
+	try {
+		const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=lGia9bvVwTFTENYiPF9Z9xm3V7mdab0zFtNaUJWj&date=${date}&hd=true`)
+		res.send(response.data as Inasa)
+	}
+	catch (error: AxiosError | unknown) {
+		res.send();
+	}
 
-	const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=lGia9bvVwTFTENYiPF9Z9xm3V7mdab0zFtNaUJWj&date=2024-11-12&hd=true`)
-	res.send(response.data as Inasa)
 
 });
 

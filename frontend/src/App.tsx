@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios, { AxiosError } from "axios";
-import SearchAppBar from "./Components/AppBar";
+import dayjs, { Dayjs } from "dayjs";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { CircularProgress } from "@mui/material";
+import "./App.css";
 interface Inasa {
   copyright: string;
   date: string;
@@ -13,64 +19,78 @@ interface Inasa {
 }
 
 const App = () => {
-  const [data, setData] = useState<Inasa>();
-  const [error, setError] = useState<string>();
+  const [data, setData] = useState<Inasa | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [value, setValue] = useState<Dayjs | null>(dayjs());
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (selectedDate: string) => {
       try {
-        const response = await axios.get<Inasa>("http://localhost:5001/");
+        const response = await axios.get<Inasa>("http://localhost:5001/nasa/", {
+          params: { date: selectedDate },
+        });
         setData(response.data);
-        console.log(response.data);
-      } catch (error) {
-        const axiosError = error as AxiosError;
+      } catch (err) {
+        const axiosError = err as AxiosError;
         setError(axiosError.message);
-        console.error(axiosError);
+        setData(null);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchData();
-  }, []);
+    if (value) {
+      fetchData(value.format("YYYY-MM-DD"));
+    }
+  }, [value]);
 
   return (
     <div
+      className="webpage"
       style={{
-        minHeight: "100vh",
-        margin: 0,
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
-        backgroundImage: `url(${data?.hdurl})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundImage: data?.hdurl
+          ? `url(${data.hdurl})`
+          : data?.url
+          ? `url(${data.url})`
+          : "linear-gradient(to bottom, #000, #333)",
       }}
     >
-      <SearchAppBar />
-      {error ? (
-        <div
-          style={{
-            padding: "20px",
-            margin: "auto",
-            border: "2px solid red",
-            borderRadius: "10px",
-            background: "rgba(255, 0, 0, 0.2)",
-          }}
-        >
+      <div className="datepicker">
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+          <DemoContainer components={["DatePicker"]}>
+            <h1>NASA's Best Picture of the Day</h1>
+            <DatePicker
+              label="Select a Date"
+              sx={{
+                "& .MuiInputLabel-root": { color: "white" },
+                "& .MuiOutlinedInput-root": {
+                  color: "white",
+                  "& fieldset": { borderColor: "white" },
+                },
+                "& .MuiSvgIcon-root": { color: "white" },
+              }}
+              value={value}
+              onChange={(newValue) => {
+                setValue(newValue);
+              }}
+              disableFuture
+            />
+          </DemoContainer>
+        </LocalizationProvider>
+      </div>
+
+      <div style={{ flex: 1 }} />
+      {loading ? (
+        <div className="loading">
+          <CircularProgress sx={{ color: "white" }} />
+        </div>
+      ) : error ? (
+        <div className="error">
           <p>Error: {error}</p>
         </div>
       ) : data ? (
-        <div
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(42,42,42,0) 0%, rgba(42,42,42,0.9) 40%)",
-            color: "white",
-            padding: "90px",
-            borderTopLeftRadius: "20px",
-            borderTopRightRadius: "20px",
-            textAlign: "center",
-          }}
-        >
+        <div className="data">
           <h1 style={{ fontSize: "2.5rem", marginBottom: "10px" }}>
             {data.title}
           </h1>
@@ -78,18 +98,7 @@ const App = () => {
             {data.explanation}
           </p>
         </div>
-      ) : (
-        <div
-          style={{
-            textAlign: "center",
-            color: "white",
-            margin: "auto",
-            fontSize: "1.5rem",
-          }}
-        >
-          Loading...
-        </div>
-      )}
+      ) : null}
     </div>
   );
 };
