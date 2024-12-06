@@ -24,7 +24,6 @@ const App = () => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [value, setValue] = useState<Dayjs | null>(dayjs());
-  console.log("Hello World");
 
   useEffect(() => {
     const fetchData = async (selectedDate: string) => {
