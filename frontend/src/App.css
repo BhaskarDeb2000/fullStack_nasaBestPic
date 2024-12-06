@@ -9,16 +9,16 @@
   background-repeat: no-repeat;
   color: rgb(37, 37, 37);
 }
+
 .datepicker {
   padding: 10px;
-background:linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
   display: flex;
   justify-content: space-between;
-
 }
 
 .datepicker h1 {
-padding-right: 110vh;
+  padding-right: 110vh;
   color: white;
   margin-left: 0;
 }
@@ -30,7 +30,8 @@ padding-right: 110vh;
   align-items: center;
   height: 100vh;
 }
-.error{
+
+.error {
   padding: 20px 20px;
   margin: auto;
   border: 2px solid red;
@@ -52,6 +53,10 @@ padding-right: 110vh;
   border-top-right-radius: 20px;
   text-align: center;
 }
+
+/* Media Queries for Responsive Design */
+
+/* Small devices (phones, less than 768px) */
 @media (max-width: 768px) {
   .datepicker {
     flex-direction: column;
@@ -75,7 +80,7 @@ padding-right: 110vh;
   }
 }
 
-
+/* Medium devices (tablets, 768px to 1024px) */
 @media (max-width: 1024px) {
   .datepicker h1 {
     padding-right: 50vh;
