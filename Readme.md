@@ -54,7 +54,7 @@ The app consists of:
 
 ## 📸 Screenshots
 ### Landing Page 🌌
-![Landing Page Screenshot](./Demo/demoImg.png)
+![Landing Page Screenshot](./Demo/DemoImg.png)
 
 ---
 
