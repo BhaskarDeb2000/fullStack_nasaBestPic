@@ -63,9 +63,10 @@ const App = () => {
       <div className="datepicker">
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DemoContainer components={["DatePicker"]}>
-            <h1>NASA's Best Picture of the Day</h1>
+            <h1>NASA's Picture of the Day</h1>
+
             <DatePicker
-              label="Select a Date"
+              label="Select a date to see"
               sx={{
                 "& .MuiInputLabel-root": { color: "white" },
                 "& .MuiOutlinedInput-root": {
