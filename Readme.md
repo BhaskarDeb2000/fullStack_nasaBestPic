@@ -10,14 +10,10 @@ Welcome to the **NASA Picture of the Day App**, where you can explore breathtaki
 
 - [Overview](#-overview)
 - [Features](#-features)
-- [Getting Started](#-getting-started)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Technologies Used](#-technologies-used)
+- [Technologies Used](#️-technologies-used)
 - [Screenshots](#-screenshots)
-- [API Reference](#-api-reference)
-- [Contributing](#️-contributing)
-- [License](#-license)
+- [API Reference](#️-api-reference)
+- [Acknowledgments](#-acknowledgments)
 
 ---
 
