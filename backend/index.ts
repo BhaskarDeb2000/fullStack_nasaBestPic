@@ -9,7 +9,7 @@ const app = express();
 const port = process.env.PORT || 5001;
 const NASA_API_KEY = process.env.NASA_API_KEY
 app.use(cors())
-console.log(NASA_API_KEY);
+
 
 interface Inasa {
 	copyright: string,
