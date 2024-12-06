@@ -22,9 +22,6 @@ interface Inasa {
 }
 
 
-
-
-
 app.get('/nasa', async (req: Request, res: Response) => {
 	const date = req.query.date as string;
 	try {
@@ -33,7 +30,7 @@ app.get('/nasa', async (req: Request, res: Response) => {
 
 	}
 	catch (error: AxiosError | unknown) {
-		res.send();
+		res.send("Cannot get anything");
 	}
 
 
