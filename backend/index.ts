@@ -24,6 +24,10 @@ interface Inasa {
 
 app.get('/nasa', async (req: Request, res: Response) => {
 	const date = req.query.date as string;
+console.log(date);
+console.log(NASA_API_KEY);
+
+
 	try {
 		const response = await axios.get(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}&date=${date}&hd=true`)
 		res.send(response.data as Inasa)
