@@ -57,7 +57,7 @@ The app consists of:
 
 ### Landing Page 🌌
 
-![ScreenShot](./Demo/DemoImg.png)
+![ScreenShot](./Demo/demo.png)
 
 ---
 
